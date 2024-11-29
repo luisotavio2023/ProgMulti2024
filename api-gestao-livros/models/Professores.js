@@ -23,14 +23,12 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       Foto: {
-        type: DataTypes.BLOB,
+        type: DataTypes.STRING,
         allowNull: false,
-        unique: false,
       },
       data_nascimento: {
         type: DataTypes.DATE,
         allowNull: false,
-        unique: true,
       },
       cpf: {
         type: DataTypes.STRING,
@@ -40,12 +38,10 @@ module.exports = (sequelize, DataTypes) => {
       salario: {
         type: DataTypes.FLOAT,
         allowNull: false,
-        unique: true,
       },
       formacao: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
       },
       nivel: {
         type: DataTypes.ENUM('Administrador', 'Professor'),

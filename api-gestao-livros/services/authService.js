@@ -4,9 +4,22 @@ const { Professores } = require('../models');
 require('dotenv').config();
 
 const authService = {
-    async registrar(nome, email, senha, nivel) {
+    async registrar({ nome, email, senha, nivel, foto, datanasc, cpf, salario, formacao }) {
+        // Criptografando a senha antes de salvar
         const senhaCriptografada = await bcrypt.hash(senha, 10);
-        return Professores.create({ nome, email, senha: senhaCriptografada, foto, datanasc, cpf, salario, formacao, nivel });
+
+        // Criando o novo registro de professor
+        return Professores.create({
+            nome,
+            email,
+            senha: senhaCriptografada,
+            foto,        
+            datanasc,    
+            cpf,        
+            salario,     
+            formacao,   
+            nivel        
+        });
     },
 
     async login(email, senha) {

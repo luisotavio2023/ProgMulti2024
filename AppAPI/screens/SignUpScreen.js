@@ -7,15 +7,25 @@ const SignUpScreen = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [foto, setFoto] = useState('');
+  const [dataNasc, setDataNasc] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [salario, setSalario] = useState('');
+  const [formacao, setFormacao] = useState('');
   const navigation = useNavigation();
 
   const handleSignUp = async () => {
     try {
-      await axios.post('http://localhost:3000/api/auth/cadastrar', {
+      await axios.post('http://localhost:3006/api/auth/cadastrar', {
         nome: name, 
         email: email,
         senha: password,
-        nivel: 'Funcionario'
+        nivel: 'Professor',
+        foto: foto,
+        dataNasc: dataNasc,
+        cpf: cpf,
+        salario: salario,
+        formacao: formacao
       });
       navigation.navigate('Login');
     } catch (error) {
@@ -47,48 +57,35 @@ const SignUpScreen = () => {
 
       <TextInput
         style={styles.input}
-        placeholder="Senha"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />      
-
-      <TextInput
-        style={styles.image}
         placeholder="Foto"
-        secureTextEntry
         value={foto}
         onChangeText={setFoto}
       />
 
       <TextInput
-        style={styles.date}
-        placeholder="mm/dd/aa"
-        secureTextEntry
-        value={password}
+        style={styles.input}
+        placeholder="Data de Nascimento (mm/dd/aa)"
+        value={dataNasc}
         onChangeText={setDataNasc}
       />
 
       <TextInput
         style={styles.input}
         placeholder="Seu CPF"
-        secureTextEntry
         value={cpf}
-        onChangeText={setDataNasc}
+        onChangeText={setCpf}
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Salario"
-        secureTextEntry
+        placeholder="Salário"
         value={salario}
         onChangeText={setSalario}
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Formacao"
-        secureTextEntry
+        placeholder="Formação"
         value={formacao}
         onChangeText={setFormacao}
       />
